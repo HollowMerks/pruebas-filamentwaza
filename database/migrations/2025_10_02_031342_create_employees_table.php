@@ -14,16 +14,17 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
-            $table->foreign('country_id') -> constrained() -> cascadeOnDelete();
-            $table->foreign('state_id') -> constrained() -> cascadeOnDelete();
-            $table->foreign('city_id') -> constrained() -> cascadeOnDelete();
-            $table->foreign('department_id') -> constrained() -> cascadeOnDelete();
+            $table->foreignId('country_id') -> constrained() -> cascadeOnDelete();
+            $table->foreignId('state_id') -> constrained() -> cascadeOnDelete();
+            $table->foreignId('city_id') -> constrained() -> cascadeOnDelete();
+            $table->foreignId('department_id') -> constrained() -> cascadeOnDelete();
             $table->string('last_name');
-            $table->strom('middle_name');
+            $table->string('middle_name');
             $table->string('address');
-            $table->char('zip.code');
-            $table->date("birth_of_date");
+            $table->date("date_of_birth");
             $table->date('date_hired');
+            $table->char('zip_code', 10);
+
             $table->timestamps();
         });
     }
